@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"<Unnamed>","c":"MagicMath","l":"abs(int)"},{"p":"<Unnamed>","c":"MagicMath","l":"fact(int)"},{"p":"<Unnamed>","c":"MagicMath","l":"MagicMath()","u":"%3Cinit%3E()"},{"p":"<Unnamed>","c":"MagicMath","l":"pow(int, int)","u":"pow(int,int)"}];updateSearchResults();
