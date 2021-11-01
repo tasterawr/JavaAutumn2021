@@ -243,8 +243,11 @@ public class MyLinkedList<T> implements List<T> {
             tail = new Node<T>((T)element, null, next);
         }
         else if (index == size - 1){
-            Node<T> prev = head;
-            head = new Node<T>((T)element, prev, null);
+            Node<T> prev = head.getPrevious();
+            Node<T> next = head;
+            head = new Node<T>((T)element, prev, next);
+            prev.setNext(head);
+            next.setPrevious(head);
         }
         else{
             Node<T> cur = tail;
@@ -280,12 +283,32 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        Node<T> cur = tail;
+        int i = 0;
+        while (!cur.getValue().equals(o)){
+            cur = cur.getNext();
+            i++;
+
+            if (cur == null)
+                return -1;
+        }
+
+        return i;
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        Node<T> cur = head;
+        int i = size - 1;
+        while(!cur.getValue().equals(o)){
+            cur = cur.getPrevious();
+            i--;
+
+            if (cur == null)
+                return -1;
+        }
+
+        return i;
     }
 
     @Override
@@ -300,7 +323,19 @@ public class MyLinkedList<T> implements List<T> {
 
     @Override
     public List subList(int fromIndex, int toIndex) {
-        return null;
+        if (fromIndex < 0 || fromIndex > size || toIndex < 0 || toIndex > size)
+            throw new IndexOutOfBoundsException();
+
+        List<T> subList = new MyLinkedList<>();
+        Node<T> cur = tail;
+        for (int i = 0; i <= toIndex; i++){
+            if (i >= fromIndex){
+                subList.add(cur.getValue());
+            }
+
+            cur = cur.getNext();
+        }
+        return subList;
     }
 
     @Override

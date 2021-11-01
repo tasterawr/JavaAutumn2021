@@ -51,8 +51,27 @@ public class Main {
         }
 
         System.out.println();
-        System.out.print("Передача массива контейнера: ");
+        System.out.print("Передача массива контейнера с большей емкостью: ");
         for (Object o : list.toArray(new Object[6])){
+            System.out.print(o + " ");
+        }
+
+        System.out.println();
+        System.out.println("Индекс элемента со значением 6: " + list.indexOf(6));
+
+        list.add(4, 5);
+        System.out.print("Как массив: ");
+        for (Object o : list.toArray()){
+            System.out.print(o + " ");
+        }
+
+        System.out.println();
+        System.out.println("Последний индекс элемента со значением 5: " + list.lastIndexOf(5));
+
+        List<Integer> subList = list.subList(2, 4);
+        System.out.println();
+        System.out.print("Под-список с 2 по 4 индекс: ");
+        for (Object o : subList.toArray()){
             System.out.print(o + " ");
         }
 
